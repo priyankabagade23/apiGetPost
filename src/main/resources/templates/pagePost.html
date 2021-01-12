@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+
+
+<script>
+
+var app = angular.module('myAppGet', []);
+app.controller('myCtrlGet', function($scope, $http) {
+
+  $scope.postdata = function (email, name, id) {
+    console.log('HI');
+    var data = {
+    email: email,
+    name: name,
+    id: id
+    };
+    console.log('mid');
+    $http.post('http://localhost:8080/demo/add', JSON.stringify(data))
+    .then(function (response) {
+        if (response.data)
+            $scope.msg = " Post Data Not Submitted Successfully";
+        }, function (response) {
+            $scope.msg = "Post Data Submitted Successfully!";
+        });
+    };
+});
+
+    </script>
+
+<div ng-app="myAppGet" ng-controller="myCtrlGet">
+
+    <p>email : <input ng-model="email"></p>
+    <p>name : <input ng-model="name"></p>
+    <p>id : <input ng-model="id"></p>
+    <input type="button" value="Send" ng-click="postdata(email, name, id)" /> <br/><br/>
+    <p>Output Message : {{msg}}</p>
+</div>
+
+</body>
+</html>

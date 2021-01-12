@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+
+
+
+
+<script>
+
+var app = angular.module('myAppGet', []);
+app.controller('myCtrlGet', function($scope, $http) {
+  $http({
+    method : "GET",
+    url : "http://localhost:8080/demo/all"
+  }).then(function mySuccess(response) {
+        console.log('HI');
+        $scope.myData = response.data;
+        console.log(response.data);
+    }, function myError(response) {
+      $scope.myWelcome = response.statusText;
+  });
+});
+
+    </script>
+
+<div ng-app="myAppGet" ng-controller="myCtrlGet">
+
+    <p>Today's welcome message is:</p>
+
+    <h1>{{myWelcome}}</h1>
+
+    <h3 ng-repeat="x in myData">
+        {{"Email : " + x.email + "Name : " + x.name + "id : " + x.id}}
+    </h3>
+
+</body>
+</html>
