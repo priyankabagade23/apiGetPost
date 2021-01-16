@@ -10,7 +10,8 @@ public class MainController {
 	@Autowired
 	private UserRepository userRepository;
 
-	@PostMapping(path="/add") // Map ONLY POST Requests
+	@PostMapping(path="/add") // Map
+	// POST Requests
 	public @ResponseBody String addNewUser (@RequestBody User user) {
 
 		userRepository.save(user);

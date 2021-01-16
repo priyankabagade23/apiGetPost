@@ -13,10 +13,10 @@ var app = angular.module('myAppGet', []);
 app.controller('myCtrlGet', function($scope, $http) {
   $http({
     method : "GET",
-    url : "http://localhost:8080/demo/all"
+    url : "https://apigetpost.herokuapp.com/demo/all"
   }).then(function mySuccess(response) {
         console.log('HI');
-        $scope.myData = response.data;
+        $scope.myWelcome = response.data;
         console.log(response.data);
     }, function myError(response) {
       $scope.myWelcome = response.statusText;
@@ -34,6 +34,6 @@ app.controller('myCtrlGet', function($scope, $http) {
     <h3 ng-repeat="x in myData">
         {{"Email : " + x.email + "Name : " + x.name + "id : " + x.id}}
     </h3>
-
+</div>
 </body>
 </html>

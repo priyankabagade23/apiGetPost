@@ -18,7 +18,7 @@ app.controller('myCtrlGet', function($scope, $http) {
     id: id
     };
     console.log('mid');
-    $http.post('http://localhost:8080/demo/add', JSON.stringify(data))
+    $http.post('https://apigetpost.herokuapp.com/demo/add', JSON.stringify(data))
     .then(function (response) {
         if (response.data)
             $scope.msg = " Post Data Not Submitted Successfully";
