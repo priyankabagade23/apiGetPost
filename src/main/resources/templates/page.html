@@ -13,10 +13,10 @@ var app = angular.module('myAppGet', []);
 app.controller('myCtrlGet', function($scope, $http) {
   $http({
     method : "GET",
-    url : "https://apigetpost.herokuapp.com/demo/all"
+    url : "http://localhost:8080/demo/getAllUsers"
   }).then(function mySuccess(response) {
         console.log('HI');
-        $scope.myWelcome = response.data;
+        $scope.myData = response.data;
         console.log(response.data);
     }, function myError(response) {
       $scope.myWelcome = response.statusText;
